@@ -14,8 +14,8 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextArea layoutX="38.0" layoutY="82.0" prefHeight="338.0" prefWidth="641.0" />
-      <TextField layoutX="38.0" layoutY="444.0" prefHeight="26.0" prefWidth="524.0" />
-      <Button layoutX="617.0" layoutY="444.0" mnemonicParsing="false" text="Send" />
+      <TextArea fx:id="textArea" layoutX="38.0" layoutY="82.0" prefHeight="338.0" prefWidth="641.0" />
+      <TextField fx:id="textField" layoutX="38.0" layoutY="444.0" prefHeight="26.0" prefWidth="524.0" />
+      <Button onAction="#sendOnAction" layoutX="617.0" layoutY="444.0" mnemonicParsing="false" text="Send" />
    </children>
 </AnchorPane>

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="524.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientFormController">
    <children>
       <Label layoutX="34.0" layoutY="30.0" text="Client">
@@ -15,8 +14,8 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <TextArea layoutX="42.0" layoutY="87.0" prefHeight="359.0" prefWidth="680.0" />
-      <TextField layoutX="42.0" layoutY="467.0" prefHeight="26.0" prefWidth="600.0" />
-      <Button layoutX="671.0" layoutY="467.0" mnemonicParsing="false" text="Send" />
+      <TextArea fx:id="textArea" layoutX="42.0" layoutY="87.0" prefHeight="359.0" prefWidth="680.0" />
+      <TextField fx:id="textMessage" layoutX="42.0" layoutY="467.0" prefHeight="26.0" prefWidth="600.0" />
+      <Button layoutX="671.0" layoutY="467.0" mnemonicParsing="false" onAction="#sendOnAction" text="Send" />
    </children>
 </AnchorPane>
