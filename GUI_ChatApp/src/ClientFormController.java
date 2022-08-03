@@ -18,19 +18,22 @@ public class ClientFormController {
     DataInputStream dataInputStream;
     DataOutputStream dataOutputStream;
     BufferedReader bufferedReader;
+    String message = "";
 
     public void initialize() {
         new Thread(() -> {
             try {
-                socket = new Socket("localhost",PORT);
+                socket = new Socket("localhost", PORT);
 
                 dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 dataInputStream = new DataInputStream(socket.getInputStream());
 
 //                bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-                String message = dataInputStream.readUTF();
-                System.out.println(message);
+                while (!message.equals("exit")) {
+                    message = dataInputStream.readUTF();
+                    textArea.appendText(message + "\n");
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();

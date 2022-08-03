@@ -16,22 +16,26 @@ public class ServerFormController {
     DataInputStream dataInputStream;
     DataOutputStream dataOutputStream;
     BufferedReader bufferedReader;
+    String message = "";
 
     public void initialize() {
         new Thread(() -> {
             try {
                 serverSocket = new ServerSocket(PORT);
-                System.out.println("Server Started..");
+                textArea.appendText("Server Started..");
                 accept = serverSocket.accept();
-                System.out.println("Client Connected..");
+                textArea.appendText("\nClient Connected..");
 
                 dataOutputStream = new DataOutputStream(accept.getOutputStream());
                 dataInputStream = new DataInputStream(accept.getInputStream());
 
 //                bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-                String message = dataInputStream.readUTF();
-                System.out.println(message);
+
+                while (!message.equals("exit")) {
+                    message = dataInputStream.readUTF();
+                    textArea.appendText("\n" + message);
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
