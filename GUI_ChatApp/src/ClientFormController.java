@@ -1,6 +1,8 @@
+import com.jfoenix.utils.JFXHighlighter;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -19,6 +21,8 @@ public class ClientFormController {
     DataOutputStream dataOutputStream;
     BufferedReader bufferedReader;
     String message = "";
+    String receivedMsg = "";
+    JFXHighlighter highlighter = new JFXHighlighter();
 
     public void initialize() {
         new Thread(() -> {
@@ -32,7 +36,9 @@ public class ClientFormController {
 
                 while (!message.equals("exit")) {
                     message = dataInputStream.readUTF();
+                    highlighter.setPaint(Color.YELLOW);
                     textArea.appendText(message + "\n");
+                    highlighter.highlight(textArea,message);
                 }
 
             } catch (IOException e) {
