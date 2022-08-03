@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/First_Module/First_Module.iml" filepath="$PROJECT_DIR$/First_Module/First_Module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GUI_ChatApp/GUI_ChatApp.iml" filepath="$PROJECT_DIR$/GUI_ChatApp/GUI_ChatApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/INP.iml" filepath="$PROJECT_DIR$/INP.iml" />
       <module fileurl="file://$PROJECT_DIR$/SimpleChat/SimpleChat.iml" filepath="$PROJECT_DIR$/SimpleChat/SimpleChat.iml" />
     </modules>

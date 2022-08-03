@@ -13,7 +13,7 @@ public class ClientApp {
 
             String message = "", reply = "";
 
-            while (!message.equals("finish")||reply.equals("finish")) {
+            while (!message.equals("finish") || reply.equals("finish")) {
                 reply = bufferedReader.readLine();
                 dataOutputStream.writeUTF(reply);
                 message = dataInputStream.readUTF();
