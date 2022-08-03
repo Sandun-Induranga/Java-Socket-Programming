@@ -39,6 +39,8 @@ public class ServerFormController {
         }).start();
     }
 
-    public void sendOnAction(ActionEvent actionEvent) {
+    public void sendOnAction(ActionEvent actionEvent) throws IOException {
+        dataOutputStream.writeUTF(textField.getText().trim());
+        dataOutputStream.flush();
     }
 }

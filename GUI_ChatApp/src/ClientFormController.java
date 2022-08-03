@@ -38,6 +38,8 @@ public class ClientFormController {
         }).start();
     }
 
-    public void sendOnAction(ActionEvent actionEvent) {
+    public void sendOnAction(ActionEvent actionEvent) throws IOException {
+        dataOutputStream.writeUTF(textMessage.getText().trim());
+        dataOutputStream.flush();
     }
 }
