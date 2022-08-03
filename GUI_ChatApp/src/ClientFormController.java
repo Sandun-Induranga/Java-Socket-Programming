@@ -10,6 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientFormController {
     public TextArea textArea;
@@ -21,7 +23,7 @@ public class ClientFormController {
     DataOutputStream dataOutputStream;
     BufferedReader bufferedReader;
     String message = "";
-    String receivedMsg = "";
+    List<String> receivedMsg = new ArrayList<>();
     JFXHighlighter highlighter = new JFXHighlighter();
 
     public void initialize() {
@@ -37,8 +39,12 @@ public class ClientFormController {
                 while (!message.equals("exit")) {
                     message = dataInputStream.readUTF();
                     highlighter.setPaint(Color.YELLOW);
+                    receivedMsg.add(message);
                     textArea.appendText(message + "\n");
-                    highlighter.highlight(textArea,message);
+                    for (String s :
+                            receivedMsg) {
+                        highlighter.highlight(textArea, s);
+                    }
                 }
 
             } catch (IOException e) {
@@ -48,6 +54,7 @@ public class ClientFormController {
     }
 
     public void sendOnAction(ActionEvent actionEvent) throws IOException {
+        textArea.appendText(textMessage.getText());
         dataOutputStream.writeUTF(textMessage.getText().trim());
         dataOutputStream.flush();
     }
