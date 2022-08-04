@@ -18,10 +18,6 @@
       <TextArea fx:id="textArea" layoutX="42.0" layoutY="87.0" prefHeight="359.0" prefWidth="202.0" />
       <TextField fx:id="textMessage" layoutX="42.0" layoutY="467.0" prefHeight="26.0" prefWidth="600.0" />
       <Button layoutX="671.0" layoutY="467.0" mnemonicParsing="false" onAction="#sendOnAction" text="Send" />
-      <AnchorPane fx:id="context" layoutX="296.0" layoutY="67.0">
-         <children>
-            <ScrollPane fx:id="sp" prefHeight="359.0" prefWidth="391.0" />
-         </children>
-      </AnchorPane>
+      <ScrollPane fx:id="sp" layoutX="280.0" layoutY="46.0" prefHeight="359.0" prefWidth="391.0" />
    </children>
 </AnchorPane>

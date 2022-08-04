@@ -7,6 +7,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -25,7 +26,6 @@ public class ClientFormController {
     public TextField textMessage;
 
     final int PORT = 5000;
-    public AnchorPane context;
     public ScrollPane sp;
     Socket socket;
     DataInputStream dataInputStream;
@@ -34,10 +34,12 @@ public class ClientFormController {
     String message = "";
     List<String> receivedMsg = new ArrayList<>();
     JFXHighlighter highlighter = new JFXHighlighter();
+    AnchorPane context = new AnchorPane();
+    int i = 0;
 
     public void initialize() {
-
         Platform.setImplicitExit(false);
+        sp.setContent(context);
         new Thread(() -> {
             try {
                 socket = new Socket("localhost", PORT);
@@ -57,10 +59,12 @@ public class ClientFormController {
                         public void run() {
                             Label label = new Label(message);
 //                            sp.setContent(label);
-                            label.setLayoutY(20);
+                            context.setPrefHeight(context.getPrefHeight() + label.getPrefHeight());
+                            label.setLayoutY(i);
                             context.getChildren().add(label);
                         }
                     });
+                    i += 20;
                 }
 
             } catch (IOException e) {
