@@ -59,7 +59,7 @@ public class ClientFormController {
                         public void run() {
                             Label label = new Label(message);
 //                            sp.setContent(label);
-                            context.setPrefHeight(context.getPrefHeight() + label.getPrefHeight());
+//                            context.setPrefHeight(context.getPrefHeight() + label.getPrefHeight());
                             label.setLayoutY(i);
                             context.getChildren().add(label);
                         }
@@ -75,6 +75,11 @@ public class ClientFormController {
 
     public void sendOnAction(ActionEvent actionEvent) throws IOException {
         textArea.appendText(textMessage.getText());
+        Label label = new Label(textMessage.getText());
+        i+=20;
+        label.setLayoutY(i);
+        i+=20;
+        context.getChildren().add(label);
         dataOutputStream.writeUTF(textMessage.getText().trim());
         dataOutputStream.flush();
     }
