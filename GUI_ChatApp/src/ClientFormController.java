@@ -1,8 +1,15 @@
 import com.jfoenix.utils.JFXHighlighter;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -18,6 +25,8 @@ public class ClientFormController {
     public TextField textMessage;
 
     final int PORT = 5000;
+    public AnchorPane context;
+    public ScrollPane sp;
     Socket socket;
     DataInputStream dataInputStream;
     DataOutputStream dataOutputStream;
@@ -27,6 +36,8 @@ public class ClientFormController {
     JFXHighlighter highlighter = new JFXHighlighter();
 
     public void initialize() {
+
+        Platform.setImplicitExit(false);
         new Thread(() -> {
             try {
                 socket = new Socket("localhost", PORT);
@@ -41,10 +52,15 @@ public class ClientFormController {
                     highlighter.setPaint(Color.YELLOW);
                     receivedMsg.add(message);
                     textArea.appendText(message + "\n");
-                    for (String s :
-                            receivedMsg) {
-                        highlighter.highlight(textArea, s);
-                    }
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Label label = new Label(message);
+//                            sp.setContent(label);
+                            label.setLayoutY(20);
+                            context.getChildren().add(label);
+                        }
+                    });
                 }
 
             } catch (IOException e) {
