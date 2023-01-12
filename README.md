@@ -1,2 +1,2 @@
-# Java-Socket-Programming
+# Java Socket Programming
 Introduction to network programming
